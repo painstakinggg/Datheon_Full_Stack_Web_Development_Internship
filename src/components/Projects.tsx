@@ -179,14 +179,6 @@ export function Projects() {
                     <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                   </a>
 
-                  <a
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="truncate text-xs font-mono text-zinc-500 transition-colors hover:text-violet-700 dark:text-zinc-400 dark:hover:text-violet-300"
-                  >
-                    {project.url.replace(/^https?:\/\//, '')}
-                  </a>
                 </div>
               </div>
             </article>
