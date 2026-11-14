@@ -85,6 +85,12 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (!notice) return;
+    const timeout = window.setTimeout(() => setNotice(""), 2500);
+    return () => window.clearTimeout(timeout);
+  }, [notice]);
+
+  useEffect(() => {
     try {
       localStorage.setItem(CART_KEY, JSON.stringify(cart));
       setStorageError(false);
@@ -119,7 +125,7 @@ function App() {
         : [...current, { product, quantity: 1 }];
     });
     setNotice("Added to your bag");
-    setCartOpen(true);
+    setCartOpen(false);
   }
   function changeQuantity(id: number, amount: number) {
     setCart(current => current
