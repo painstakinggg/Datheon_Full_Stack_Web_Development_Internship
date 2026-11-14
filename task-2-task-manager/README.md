@@ -12,7 +12,10 @@ A responsive task manager and productivity tracker built with React, TypeScript,
 - Search task titles and descriptions
 - Filter by category
 - View task totals, completed tasks, pending tasks, and overdue tasks
-- Persist tasks in browser localStorage
+- Persist tasks in browser localStorage, with a visible warning if the browser cannot save changes
+- Confirm before deleting a task
+- Use local calendar dates for Today and overdue calculations
+- Provide visible keyboard focus and accessible names for search and category filters
 - Responsive desktop, tablet, and mobile layouts
 
 ## Technology
