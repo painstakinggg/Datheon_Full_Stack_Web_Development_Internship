@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
-import { BrowserRouter, Link, Route, Routes, useParams } from "react-router-dom";
+import { BrowserRouter, Link, Route, Routes, useLocation, useParams } from "react-router-dom";
 import {
   ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus, Search, ShoppingBag,
   SlidersHorizontal, Star, Trash2, X, Truck, ShieldCheck, RotateCcw
@@ -81,6 +81,23 @@ function ProductDetailPage({ products, loading, apiError, addToCart, favorites, 
       <div className="detail-back-link"><Link to="/#shop"><ArrowRight size={15}/> Back to all products</Link></div>
     </main>
   );
+}
+
+function ScrollToTop() {
+  const { pathname, hash } = useLocation();
+
+  useEffect(() => {
+    if (hash) {
+      const target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (target) {
+        target.scrollIntoView({ behavior: "auto", block: "start" });
+        return;
+      }
+    }
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, [pathname, hash]);
+
+  return null;
 }
 
 function AppContent() {
@@ -285,6 +302,6 @@ function AppContent() {
   );
 }
 
-function App() { return <BrowserRouter><AppContent/></BrowserRouter>; }
+function App() { return <BrowserRouter><ScrollToTop/><AppContent/></BrowserRouter>; }
 
 export default App;
