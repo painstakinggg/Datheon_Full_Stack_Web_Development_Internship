@@ -155,11 +155,11 @@ function App() {
           </div>
           <button className="bag-button" onClick={() => setCartOpen(true)} aria-label={`Open shopping bag, ${itemCount} items`}><ShoppingBag size={19}/><b className="bag-count">{itemCount}</b></button>
         </div>
-        {menuOpen && <nav className="header-menu" aria-label="Main navigation"><a href="#shop" onClick={() => setMenuOpen(false)}>Shop collection</a><a href="#story" onClick={() => setMenuOpen(false)}>Our story</a></nav>}
+        {menuOpen && <nav className="header-menu" aria-label="Main navigation"><span className="header-menu-label">EXPLORE FORMA</span><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#shop" onClick={() => setMenuOpen(false)}>Shop collection</a><a href="#categories" onClick={() => setMenuOpen(false)}>Categories</a><a href="#story" onClick={() => setMenuOpen(false)}>Our story</a><a href="#support" onClick={() => setMenuOpen(false)}>Customer support</a></nav>}
       </header>
 
       <main>
-        <section className="hero" id="story">
+        <section className="hero" id="home">
           <div className="hero-copy">
             <span className="eyebrow">THE EVERYDAY EDITION</span>
             <h1>Everyday finds.<br/><em>Elevated style.</em></h1>
@@ -170,7 +170,7 @@ function App() {
 
         <section className="shop-section" id="shop">
           <div className="section-intro"><div><span className="eyebrow">CURATED FOR YOU</span><h2>Find your everyday.</h2><p>Useful things, chosen with intention.</p></div><span className="result-count">{filteredProducts.length} products</span></div>
-          <div className="catalog-toolbar">
+          <div className="catalog-toolbar" id="categories">
             <div className="category-tabs" aria-label="Product categories">
               <button className={activeCategory === "all" ? "selected" : ""} onClick={() => setActiveCategory("all")}>All products</button>
               {categories.map(category => <button key={category} className={activeCategory === category ? "selected" : ""} onClick={() => setActiveCategory(category)}>{category}</button>)}
@@ -192,10 +192,10 @@ function App() {
           </div>}
         </section>
 
-        <section className="promise-strip"><div><Truck/><strong>Complimentary shipping</strong><span>On orders over $100</span></div><div><ShieldCheck/><strong>Thoughtfully selected</strong><span>Useful by design</span></div><div><RotateCcw/><strong>Easy returns</strong><span>Within 30 days</span></div></section>
+        <section className="story-section" id="story"><span className="eyebrow">THE FORMA APPROACH</span><h2>Everyday, considered.</h2><p>We believe the things we use every day should feel thoughtful, useful and beautifully chosen. Forma brings together fashion, accessories and everyday finds in one simple collection.</p></section>\n\n        <section className="support-section" id="support"><span className="eyebrow">HERE TO HELP</span><h2>Customer support</h2><div className="support-grid"><div><Truck/><strong>Shipping</strong><p>Complimentary shipping on orders over $100.</p></div><div><RotateCcw/><strong>Returns</strong><p>Returns are available within 30 days.</p></div><div><ShieldCheck/><strong>Checkout</strong><p>This demonstration storefront uses a simulated checkout. No payment is collected.</p></div></div></section>\n\n        <section className="promise-strip"><div><Truck/><strong>Complimentary shipping</strong><span>On orders over $100</span></div><div><ShieldCheck/><strong>Thoughtfully selected</strong><span>Useful by design</span></div><div><RotateCcw/><strong>Easy returns</strong><span>Within 30 days</span></div></section>
       </main>
 
-      <footer className="footer" id="footer"><a className="wordmark" href="#">forma<span>.</span></a><p>Everyday essentials, thoughtfully considered.</p><small>DEMO STORE · DATHEON INTERNSHIP TASK 04</small></footer>
+      <footer className="footer" id="footer"><a className="wordmark" href="#home">forma<span>.</span></a><p>Everyday essentials, thoughtfully considered.</p><small>DEMO STORE · DATHEON INTERNSHIP TASK 04</small></footer>
 
       {cartOpen && <div className="overlay" onMouseDown={event => { if (event.target === event.currentTarget) setCartOpen(false); }}>
         <aside className="cart-drawer" aria-label="Shopping bag">
