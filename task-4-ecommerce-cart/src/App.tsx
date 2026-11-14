@@ -163,8 +163,8 @@ function App() {
             <p>Considered essentials for the spaces you live in and the life you make.</p>
             <a className="hero-link" href="#shop">Explore the collection <ArrowRight size={16}/></a>
           </div>
-          <div className="hero-art" aria-label="A calm, curated collection of everyday essentials">
-            <div className="art-orb"></div><div className="art-vase"></div><div className="art-book book-one"></div><div className="art-book book-two"></div>
+          <div className="hero-art">
+            <img src="https://images.unsplash.com/photo-1623096765281-9c2a43de3ec8?auto=format&fit=crop&w=1600&q=85" alt="Real-life still-life photograph of a ceramic pitcher with lavender, stacked books and natural linen" loading="eager" />
             <span>OBJECTS FOR LIVING · VOL. 01</span>
           </div>
         </section>
