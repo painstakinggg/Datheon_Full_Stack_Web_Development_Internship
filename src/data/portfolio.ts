@@ -141,7 +141,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
     status: 'Ongoing',
     linkLabel: 'Live Preview',
     url: 'https://af-luxe-preview.pages.dev/',
-    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Cloudflare Workers', 'Cloudflare D1'],
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Cloudflare Workers', 'Cloudflare D1', 'Cloudflare R2'],
     image: afLuxeImage,
     imageAlt: 'AF LUXE tailored luxury apparel and leather goods showcase preview',
   },
