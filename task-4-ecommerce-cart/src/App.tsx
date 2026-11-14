@@ -162,8 +162,8 @@ function App() {
         <section className="hero" id="story">
           <div className="hero-copy">
             <span className="eyebrow">THE EVERYDAY EDITION</span>
-            <h1>Everyday essentials.<br/><em>Elevated living.</em></h1>
-            <p>Discover thoughtfully selected home and lifestyle essentials designed to bring comfort, quality and timeless style into your everyday spaces.</p>
+            <h1>Everyday finds.<br/><em>Elevated style.</em></h1>
+            <p>Discover thoughtfully selected fashion, accessories and everyday essentials designed to complement your lifestyle.</p>
             <a className="hero-link" href="#shop">Shop the collection <ArrowRight size={16}/></a>
           </div>
         </section>
