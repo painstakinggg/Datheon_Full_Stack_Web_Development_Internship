@@ -155,15 +155,13 @@ export function Projects() {
 
               {/* Card Footer: Unboxed Stack Tags + Clickable External Link */}
               <div className="border-t border-zinc-200/80 px-6 py-5 dark:border-zinc-800/80 sm:px-7">
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs font-medium text-zinc-500 dark:text-zinc-400">
-                  {project.technologies.map((tech, index) => (
-                    <span key={tech} className="inline-flex items-center gap-2">
-                      {index > 0 && (
-                        <span aria-hidden="true" className="text-zinc-300 dark:text-zinc-700">
-                          /
-                        </span>
-                      )}
-                      <span>{tech}</span>
+                <div className="grid grid-cols-2 gap-2">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="flex min-h-9 min-w-0 items-center justify-center rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-2 text-center text-xs font-medium text-zinc-600 dark:border-zinc-800 dark:bg-[#111019] dark:text-zinc-300"
+                    >
+                      {tech}
                     </span>
                   ))}
                 </div>
