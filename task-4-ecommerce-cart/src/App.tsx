@@ -192,10 +192,27 @@ function App() {
           </div>}
         </section>
 
-        <section className="story-section" id="story"><span className="eyebrow">THE FORMA APPROACH</span><h2>Everyday, considered.</h2><p>We believe the things we use every day should feel thoughtful, useful and beautifully chosen. Forma brings together fashion, accessories and everyday finds in one simple collection.</p></section>\n\n        <section className="support-section" id="support"><span className="eyebrow">HERE TO HELP</span><h2>Customer support</h2><div className="support-grid"><div><Truck/><strong>Shipping</strong><p>Complimentary shipping on orders over $100.</p></div><div><RotateCcw/><strong>Returns</strong><p>Returns are available within 30 days.</p></div><div><ShieldCheck/><strong>Checkout</strong><p>This demonstration storefront uses a simulated checkout. No payment is collected.</p></div></div></section>\n\n        <section className="promise-strip"><div><Truck/><strong>Complimentary shipping</strong><span>On orders over $100</span></div><div><ShieldCheck/><strong>Thoughtfully selected</strong><span>Useful by design</span></div><div><RotateCcw/><strong>Easy returns</strong><span>Within 30 days</span></div></section>
+        <section className="story-section" id="story"><span className="eyebrow">THE FORMA APPROACH</span><h2>Everyday, considered.</h2><p>We believe the things we use every day should feel thoughtful, useful and beautifully chosen. Forma brings together fashion, accessories and everyday finds in one simple collection.</p></section>
+
+        <section className="support-section" id="support"><span className="eyebrow">HERE TO HELP</span><h2>Customer support</h2><div className="support-grid"><div><Truck/><strong>Shipping</strong><p>Complimentary shipping on orders over $100.</p></div><div><RotateCcw/><strong>Returns</strong><p>Returns are available within 30 days.</p></div><div><ShieldCheck/><strong>Checkout</strong><p>This demonstration storefront uses a simulated checkout. No payment is collected.</p></div></div></section>
+
+        <section className="promise-strip"><div><Truck/><strong>Complimentary shipping</strong><span>On orders over $100</span></div><div><ShieldCheck/><strong>Thoughtfully selected</strong><span>Useful by design</span></div><div><RotateCcw/><strong>Easy returns</strong><span>Within 30 days</span></div></section>
       </main>
 
-      <footer className="footer" id="footer"><a className="wordmark" href="#home">forma<span>.</span></a><p>Everyday essentials, thoughtfully considered.</p><small>DEMO STORE · DATHEON INTERNSHIP TASK 04</small></footer>
+      <footer className="footer" id="footer">
+        <div className="footer-main">
+          <div className="footer-brand">
+            <a className="footer-wordmark" href="#home" aria-label="Forma home">forma<span>.</span></a>
+            <span className="footer-kicker">THE EVERYDAY EDITION</span>
+            <p>A considered edit of fashion, accessories and everyday essentials.</p>
+          </div>
+          <div className="footer-links">
+            <div><span className="footer-heading">EXPLORE</span><a href="#home">Home</a><a href="#shop">Shop collection</a><a href="#categories">Categories</a></div>
+            <div><span className="footer-heading">THE BRAND</span><a href="#story">Our approach</a><a href="#support">Customer support</a><a href="#footer">Back to top ↑</a></div>
+          </div>
+        </div>
+        <div className="footer-bottom"><span>© 2026 FORMA</span><span>CONCEPT STOREFRONT · DATHEON INTERNSHIP</span><a href="#home">BACK TO TOP ↑</a></div>
+      </footer>
 
       {cartOpen && <div className="overlay" onMouseDown={event => { if (event.target === event.currentTarget) setCartOpen(false); }}>
         <aside className="cart-drawer" aria-label="Shopping bag">
