@@ -159,9 +159,9 @@ function App() {
         <section className="hero" id="story">
           <div className="hero-copy">
             <span className="eyebrow">THE EVERYDAY EDITION</span>
-            <h1>Good design.<br/><em>Better living.</em></h1>
-            <p>Considered essentials for the spaces you live in and the life you make.</p>
-            <a className="hero-link" href="#shop">Explore the collection <ArrowRight size={16}/></a>
+            <h1>Everyday essentials.<br/><em>Elevated living.</em></h1>
+            <p>Discover thoughtfully selected home and lifestyle essentials designed to bring comfort, quality and timeless style into your everyday spaces.</p>
+            <a className="hero-link" href="#shop">Shop the collection <ArrowRight size={16}/></a>
           </div>
         </section>
 
