@@ -208,7 +208,7 @@ function App() {
           </div>
           <div className="footer-links">
             <div><span className="footer-heading">EXPLORE</span><a href="#home">Home</a><a href="#shop">Shop collection</a><a href="#categories">Categories</a></div>
-            <div><span className="footer-heading">THE BRAND</span><a href="#story">Our approach</a><a href="#support">Customer support</a><a href="#footer">Back to top ↑</a></div>
+            <div><span className="footer-heading">THE BRAND</span><a href="#story">Our approach</a><a href="#support">Customer support</a><a href="#home">Back to top ↑</a></div>
           </div>
         </div>
         <div className="footer-bottom"><span>© 2026 FORMA</span><span>CONCEPT STOREFRONT · DATHEON INTERNSHIP</span><a href="#home">BACK TO TOP ↑</a></div>
