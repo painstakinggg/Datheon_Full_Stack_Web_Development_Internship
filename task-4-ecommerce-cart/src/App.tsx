@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
-  ArrowRight, Check, ChevronDown, Heart, Minus, Plus, Search, ShoppingBag,
+  ArrowRight, Check, ChevronDown, Heart, Menu, Minus, Plus, Search, ShoppingBag,
   SlidersHorizontal, Star, Trash2, X, Truck, ShieldCheck, RotateCcw
 } from "lucide-react";
 
@@ -44,6 +44,7 @@ function App() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [search, setSearch] = useState("");
   const [searchOpen, setSearchOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [sort, setSort] = useState("featured");
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState("");
@@ -145,14 +146,16 @@ function App() {
   return (
     <div className="store">
       <header className="header">
+        <button type="button" className="menu-toggle" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}><Menu size={21}/></button>
         <a className="wordmark" href="#" aria-label="Forma home">forma<span>.</span></a>
         <div className="header-actions">
           <div className="header-search-wrap">
             <button type="button" className="search-toggle" aria-label={searchOpen ? "Close product search" : "Open product search"} aria-expanded={searchOpen} onClick={() => setSearchOpen(open => !open)}><Search size={19}/></button>
             {searchOpen && <input className="header-search-input" aria-label="Search products" placeholder="Search products" autoFocus value={search} onChange={event => { setSearch(event.target.value); setActiveCategory("all"); }} />}
           </div>
-          <button className="bag-button" onClick={() => setCartOpen(true)} aria-label={`Open shopping bag, ${itemCount} items`}><ShoppingBag size={19}/><span>Bag</span><b>{itemCount}</b></button>
+          <button className="bag-button" onClick={() => setCartOpen(true)} aria-label={`Open shopping bag, ${itemCount} items`}><ShoppingBag size={19}/><b className="bag-count">{itemCount}</b></button>
         </div>
+        {menuOpen && <nav className="header-menu" aria-label="Main navigation"><a href="#shop" onClick={() => setMenuOpen(false)}>Shop collection</a><a href="#story" onClick={() => setMenuOpen(false)}>Our story</a></nav>}
       </header>
 
       <main>
