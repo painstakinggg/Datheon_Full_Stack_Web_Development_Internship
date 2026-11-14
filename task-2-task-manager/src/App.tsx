@@ -88,7 +88,7 @@ function App() {
       (filter === "Today" && task.dueDate === today) ||
       (filter === "Upcoming" && task.dueDate > today && !task.completed) ||
       (filter === "Completed" && task.completed) ||
-      (filter === "Pending" && !task.completed);
+      (filter === "Active" && !task.completed);
     const matchesCategory = categoryFilter === "All categories" || task.category === categoryFilter;
     const query = search.trim().toLowerCase();
     const matchesSearch = !query || task.title.toLowerCase().includes(query) || task.description.toLowerCase().includes(query);
@@ -157,7 +157,7 @@ function App() {
     { label: "Today", icon: CalendarDays },
     { label: "Upcoming", icon: Clock3 },
     { label: "Completed", icon: CheckCheck, count: completedCount },
-    { label: "Pending", icon: Circle, count: pendingCount }
+    { label: "Active", icon: Circle, count: pendingCount }
   ];
 
   return (
