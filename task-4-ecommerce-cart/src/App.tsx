@@ -101,6 +101,8 @@ function ScrollToTop() {
 }
 
 function AppContent() {
+  const location = useLocation();
+  const [pastHero, setPastHero] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const [cart, setCart] = useState<CartItem[]>(readCart);
@@ -118,6 +120,25 @@ function AppContent() {
   const [favorites, setFavorites] = useState<number[]>([]);
   const [customerName, setCustomerName] = useState("");
   const [customerEmail, setCustomerEmail] = useState("");
+
+
+
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setPastHero(true);
+      return;
+    }
+    const hero = document.getElementById("home");
+    if (!hero) {
+      setPastHero(false);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      setPastHero(!entry.isIntersecting);
+    }, { threshold: 0 });
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [location.pathname]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -214,7 +235,7 @@ function AppContent() {
 
   return (
     <div className="store">
-      <header className="header">
+      <header className={pastHero ? "header header-sticky" : "header"}>
         <button type="button" className="menu-toggle" aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(open => !open)}><Menu size={21}/></button>
         <a className="wordmark" href="/#" aria-label="Forma home">forma<span>.</span></a>
         <div className="header-actions">
