@@ -7,8 +7,8 @@ A responsive task manager and productivity tracker built with React, TypeScript,
 - Create, edit, and delete tasks
 - Add optional descriptions and due dates
 - Organize tasks into Work, Personal, Study, and Health categories
-- Mark tasks as completed or pending
-- Filter by All tasks, Today, Upcoming, Completed, or Pending
+- Mark tasks as completed or active
+- Filter by All tasks, Today, Upcoming, Completed, or Active
 - Search task titles and descriptions
 - Filter by category
 - View task totals, completed tasks, pending tasks, and overdue tasks
