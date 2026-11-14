@@ -23,3 +23,50 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:720px){.header{height:70px;min-height:70px;padding:12px 5%;gap:12px}.wordmark{font-size:27px}.header-actions{gap:12px}.header-search-input{width:105px}.hero{min-height:500px;padding:58px 7%;background-position:58% center}.hero h1{font-size:58px}.shop-section{padding:55px 5% 60px}.product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:23px 13px}.product-image-wrap{height:clamp(155px,42vw,230px)}.quick-add{opacity:1;transform:none;left:8px;right:8px;bottom:8px;height:34px}.section-intro h2{font-size:32px}.catalog-toolbar{align-items:flex-start;flex-direction:column}.category-tabs{width:100%;padding-bottom:3px}.sort-control{align-self:flex-end}.story-section,.support-section{padding:55px 6%}.story-section h2,.support-section h2{font-size:31px}.support-grid{grid-template-columns:1fr;gap:12px}.promise-strip{padding:23px 6%;grid-template-columns:1fr;gap:20px}.promise-strip>div{max-width:240px}.cart-drawer{padding:22px 18px}}
 @media(max-width:390px){.header-search-input{width:88px}.header{padding:12px 17px}.hero{min-height:470px;background-position:62% center}.hero h1{font-size:49px}.product-info h3{font-size:11px}.rating small{display:none}.cart-item{grid-template-columns:65px 1fr 20px;gap:10px}.cart-item>img{width:65px;height:78px}.checkout-modal{padding:28px 22px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* Product detail routes */
+.product-image-link{width:100%;height:100%;display:grid;place-items:center}
+.product-image-link img{width:70%;height:75%;object-fit:contain;mix-blend-mode:multiply;transition:transform .35s}
+.product-card:hover .product-image-link img{transform:scale(1.05)}
+.product-info h3 a:hover{color:#8c6c4f}
+.product-detail-page{padding:30px 7% 75px;min-height:55vh}
+.detail-breadcrumb{display:flex;align-items:center;gap:10px;color:#929489;font-size:10px;text-transform:capitalize;margin:0 0 28px;white-space:nowrap;overflow:hidden}
+.detail-breadcrumb a{color:#53604f}
+.detail-breadcrumb span:last-child{overflow:hidden;text-overflow:ellipsis}
+.product-detail{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:clamp(35px,7vw,100px);max-width:1160px;margin:0 auto;align-items:center}
+.detail-image-panel{min-height:530px;background:#eeede8;display:grid;place-items:center;position:relative;padding:55px}
+.detail-image-panel>img{width:100%;height:420px;object-fit:contain;mix-blend-mode:multiply}
+.detail-image-note{position:absolute;left:22px;bottom:20px;color:#9a8064;font-size:8px;font-weight:700;letter-spacing:.18em}
+.detail-copy{padding:20px 0}
+.detail-category{text-transform:capitalize;color:#9a8064}
+.detail-copy h1{font:500 clamp(34px,4vw,49px)/1.12 "Playfair Display",serif;letter-spacing:-1px;color:#29372d;margin:13px 0}
+.detail-rating{display:flex;align-items:center;gap:12px;margin:0 0 24px}
+.detail-rating>span{display:flex;align-items:center;gap:5px;color:#a17d51;font-size:11px}
+.detail-rating small{font-size:10px;color:#999b91}
+.detail-price{display:block;font-size:21px;color:#29372d;margin-bottom:17px}
+.detail-description{font-size:12px;line-height:1.9;color:#777b70;margin:0 0 27px}
+.detail-quantity-row{display:flex;align-items:center;justify-content:space-between;border-top:1px solid #e4e2db;border-bottom:1px solid #e4e2db;padding:15px 0;font-size:11px;color:#4c554a}
+.detail-quantity{display:flex;align-items:center;border:1px solid #deddd4}
+.detail-quantity button{width:34px;height:32px;border:0;background:transparent;color:#4c554a;display:grid;place-items:center}
+.detail-quantity button:disabled{opacity:.35;cursor:not-allowed}
+.detail-quantity span{min-width:28px;text-align:center;font-size:11px}
+.detail-add-button{height:49px;margin-top:18px}
+.detail-favorite{width:100%;height:43px;margin-top:9px;border:1px solid #deddd4;background:transparent;color:#687064;display:flex;align-items:center;justify-content:center;gap:8px;font-size:11px}
+.detail-favorite.active{color:#a65e55;border-color:#d8b8b2}
+.detail-assurances{display:grid;gap:14px;border-top:1px solid #e4e2db;margin-top:25px;padding-top:20px}
+.detail-assurances>div{display:flex;align-items:center;gap:12px;color:#9a8064}
+.detail-assurances span{display:flex;flex-direction:column;gap:3px;color:#929489;font-size:9px}
+.detail-assurances b{font-size:10px;font-weight:600;color:#4a5548}
+.related-section{max-width:1160px;margin:75px auto 0}
+.related-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:23px}
+.related-heading h2{font:500 29px "Playfair Display",serif;color:#29372d;margin:8px 0 0}
+.related-heading>a{display:flex;align-items:center;gap:8px;font-size:10px;color:#65705f;white-space:nowrap}
+.related-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.related-image{height:220px;background:#eeede8;display:grid;place-items:center;overflow:hidden}
+.related-image img{width:70%;height:75%;object-fit:contain;mix-blend-mode:multiply;transition:transform .3s}
+.related-image:hover img{transform:scale(1.05)}
+.detail-back-link{max-width:1160px;margin:35px auto 0}
+.detail-back-link a{display:inline-flex;align-items:center;gap:8px;color:#66715f;font-size:10px}
+.detail-back-link svg{transform:rotate(180deg)}
+.detail-state{min-height:440px;padding:40px 7%;display:flex;align-items:center;justify-content:center}
+@media(max-width:850px){.product-detail{grid-template-columns:1fr;gap:25px;max-width:650px}.detail-image-panel{min-height:400px}.detail-image-panel>img{height:310px}.detail-copy{padding:0}.related-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.related-image{height:clamp(155px,35vw,220px)}}
+@media(max-width:520px){.product-detail-page{padding:22px 5% 55px}.detail-breadcrumb{margin-bottom:18px}.detail-image-panel{min-height:330px;padding:30px}.detail-image-panel>img{height:270px}.detail-copy h1{font-size:34px}.related-section{margin-top:55px}.related-heading{align-items:flex-start;flex-direction:column}.related-heading h2{font-size:25px}.related-grid{gap:20px 13px}.detail-state{min-height:380px}}
