@@ -18,13 +18,34 @@ type Task = {
 const STORAGE_KEY = "datheon-task-manager-v1";
 const categories: Category[] = ["Work", "Personal", "Study", "Health"];
 
+function isTask(value: unknown): value is Task {
+  if (!value || typeof value !== "object") return false;
+  const task = value as Partial<Task>;
+  return typeof task.id === "string" &&
+    typeof task.title === "string" &&
+    typeof task.description === "string" &&
+    categories.includes(task.category as Category) &&
+    typeof task.dueDate === "string" &&
+    typeof task.completed === "boolean" &&
+    typeof task.createdAt === "number";
+}
+
 function readTasks(): Task[] {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
-    return stored ? JSON.parse(stored) as Task[] : [];
+    if (!stored) return [];
+    const parsed: unknown = JSON.parse(stored);
+    return Array.isArray(parsed) ? parsed.filter(isTask) : [];
   } catch {
     return [];
   }
+}
+
+function getLocalDateKey(date = new Date()) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
 }
 
 function dateLabel(value: string) {
@@ -36,6 +57,7 @@ function dateLabel(value: string) {
 
 function App() {
   const [tasks, setTasks] = useState<Task[]>(readTasks);
+  const [storageError, setStorageError] = useState(false);
   const [filter, setFilter] = useState("All tasks");
   const [categoryFilter, setCategoryFilter] = useState("All categories");
   const [search, setSearch] = useState("");
@@ -47,12 +69,17 @@ function App() {
   const [dueDate, setDueDate] = useState("");
 
   useEffect(() => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      setStorageError(false);
+    } catch {
+      setStorageError(true);
+    }
   }, [tasks]);
 
   const completedCount = tasks.filter((task) => task.completed).length;
   const pendingCount = tasks.length - completedCount;
-  const today = new Date().toISOString().slice(0, 10);
+  const today = getLocalDateKey();
   const overdueCount = tasks.filter((task) => !task.completed && task.dueDate && task.dueDate < today).length;
 
   const visibleTasks = useMemo(() => tasks.filter((task) => {
@@ -68,6 +95,7 @@ function App() {
     return matchesFilter && matchesCategory && matchesSearch;
   }).sort((a, b) => {
     if (a.completed !== b.completed) return Number(a.completed) - Number(b.completed);
+    if (!a.dueDate && !b.dueDate) return 0;
     if (!a.dueDate) return 1;
     if (!b.dueDate) return -1;
     return a.dueDate.localeCompare(b.dueDate);
@@ -118,7 +146,10 @@ function App() {
   }
 
   function deleteTask(id: string) {
-    setTasks((current) => current.filter((task) => task.id !== id));
+    const task = tasks.find((item) => item.id === id);
+    if (!task) return;
+    const confirmed = window.confirm(`Delete “${task.title}”? This action cannot be undone.`);
+    if (confirmed) setTasks((current) => current.filter((item) => item.id !== id));
   }
 
   const navItems = [
@@ -139,7 +170,7 @@ function App() {
         <div className="workspace-label">WORKSPACE</div>
         <nav className="side-nav" aria-label="Task filters">
           {navItems.map(({ label, icon: Icon, count }) => (
-            <button key={label} className={filter === label ? "nav-item active" : "nav-item"} onClick={() => setFilter(label)}>
+            <button key={label} type="button" aria-pressed={filter === label} className={filter === label ? "nav-item active" : "nav-item"} onClick={() => setFilter(label)}>
               <Icon size={18} strokeWidth={1.9} />
               <span>{label}</span>
               {count !== undefined && <span className="nav-count">{count}</span>}
@@ -185,8 +216,8 @@ function App() {
           <div className="panel-heading">
             <div><h2>My tasks</h2><p>{visibleTasks.length} {visibleTasks.length === 1 ? "task" : "tasks"} shown</p></div>
             <div className="filters">
-              <label className="search-box"><Search size={17} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search tasks..." /></label>
-              <label className="select-box"><Filter size={16} /><select value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}><option>All categories</option>{categories.map((item) => <option key={item}>{item}</option>)}</select><ChevronDown size={14} /></label>
+              <label className="search-box"><Search size={17} /><input aria-label="Search tasks by title or description" value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search tasks..." /></label>
+              <label className="select-box"><Filter size={16} /><select aria-label="Filter tasks by category" value={categoryFilter} onChange={(event) => setCategoryFilter(event.target.value)}><option>All categories</option>{categories.map((item) => <option key={item}>{item}</option>)}</select><ChevronDown size={14} /></label>
             </div>
           </div>
 
@@ -207,16 +238,16 @@ function App() {
             <div className="task-list">
               {visibleTasks.map((task) => (
                 <article className={task.completed ? "task-row completed" : "task-row"} key={task.id}>
-                  <button className={task.completed ? "check-button checked" : "check-button"} onClick={() => toggleTask(task.id)} aria-label={task.completed ? "Mark as pending" : "Mark as completed"}>{task.completed && <Check size={15} />}</button>
+                  <button type="button" className={task.completed ? "check-button checked" : "check-button"} onClick={() => toggleTask(task.id)} aria-pressed={task.completed} aria-label={task.completed ? "Mark as pending" : "Mark as completed"}>{task.completed && <Check size={15} />}</button>
                   <div className="task-details"><div className="task-title-line"><h3>{task.title}</h3><span className={"category-pill " + task.category.toLowerCase()}><Tag size={11} />{task.category}</span></div>{task.description && <p>{task.description}</p>}<div className="task-meta"><span className={task.dueDate && !task.completed && task.dueDate < today ? "due-date overdue" : "due-date"}><CalendarDays size={13} />{dateLabel(task.dueDate)}</span><span className="created-label">Added {new Date(task.createdAt).toLocaleDateString(undefined, { month: "short", day: "numeric" })}</span></div></div>
-                  <div className="task-actions"><button className="icon-button" onClick={() => openEdit(task)} aria-label="Edit task"><Pencil size={16} /></button><button className="icon-button delete-button" onClick={() => deleteTask(task.id)} aria-label="Delete task"><Trash2 size={16} /></button></div>
+                  <div className="task-actions"><button type="button" className="icon-button" onClick={() => openEdit(task)} aria-label={`Edit ${task.title}`}><Pencil size={16} /></button><button type="button" className="icon-button delete-button" onClick={() => deleteTask(task.id)} aria-label={`Delete ${task.title}`}><Trash2 size={16} /></button></div>
                 </article>
               ))}
             </div>
           ) : (
             <div className="empty-state"><span className="empty-icon"><ClipboardList size={25} /></span><h3>{search || filter !== "All tasks" || categoryFilter !== "All categories" ? "No matching tasks" : "Your list is clear"}</h3><p>{search || filter !== "All tasks" || categoryFilter !== "All categories" ? "Try adjusting your filters or search." : "Add your first task and start building momentum."}</p>{!search && filter === "All tasks" && categoryFilter === "All categories" && <button className="secondary-button" onClick={() => setShowForm(true)}><Plus size={16} /> Create your first task</button>}</div>
           )}
-          <div className="panel-footer"><span><span className="live-dot" /> Saved automatically on this device</span><button onClick={() => { setFilter("All tasks"); setCategoryFilter("All categories"); setSearch(""); }}>Clear filters</button></div>
+          <div className="panel-footer"><span role="status" aria-live="polite">{storageError ? "Could not save changes — browser storage may be unavailable or full." : <><span className="live-dot" /> Saved automatically on this device</>}</span><button onClick={() => { setFilter("All tasks"); setCategoryFilter("All categories"); setSearch(""); }}>Clear filters</button></div>
         </section>
         <footer className="app-footer">TASKFLOW <span>•</span> DATHEON INTERNSHIP PROJECT 02</footer>
       </main>
