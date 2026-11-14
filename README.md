@@ -1,167 +1,185 @@
-# Ibrahim Opeyemi Agboola — Personal Portfolio
+# Datheon — Full-Stack Web Development Internship
 
-A modern, responsive personal portfolio showcasing my work, technical skills, selected projects, and development journey as a Full Stack Web Developer.
+A collection of selected projects completed as part of the Datheon Full-Stack Web Development Internship. The repository is organised so each project has its own source code, dependencies, and project-specific documentation.
 
-**GitHub Repository:** [ibrahim-agboola-portfolio](https://github.com/painstakinggg/ibrahim-agboola-portfolio)
+The work demonstrates practical frontend development, responsive interface design, API integration, browser storage, interactive application behaviour, and deployment.
 
-## About the Project
+## Projects
 
-This portfolio introduces me, highlights my technical abilities, showcases selected projects, and gives visitors a way to get in touch.
+### Task 1 — Personal Developer Portfolio
 
-It features a Midnight-inspired dark obsidian and purple visual system, a responsive layout, dark/light theme switching, and interactive project previews.
+**Live website:** [https://iagboola.vercel.app](https://iagboola.vercel.app)
 
-The portfolio itself is a frontend application. My broader full-stack development experience is represented through the projects featured on the website.
+A responsive personal portfolio presenting my background, technical skills, selected work, and contact information.
 
-## Features
-
-- Responsive layouts for desktop, tablet, and mobile
-- Dark and light theme toggle
-- Responsive navigation with a mobile menu
+**Highlights**
+- Responsive layout and mobile navigation
+- Dark and light theme switching
 - About and technical skills sections
-- Featured project showcase
-- Project category filtering
-- Interactive project preview modal
-- Contact form with client-side validation
-- Email composition through a `mailto:` fallback
-- Copy-to-clipboard contact option
-- SEO metadata
-- Keyboard-accessible navigation interactions
+- Selected project showcase with category filtering
+- Interactive project previews
+- Contact options, including email and copy-to-clipboard
+- SEO metadata and keyboard-accessible interactions
 
-## Technologies
+**Technology**
+- React 19
+- TypeScript
+- Vite
+- Tailwind CSS v4
+- Motion
+- Lucide React
 
-| Technology | Purpose |
-|---|---|
-| React 19 | User interface |
-| TypeScript | Type safety |
-| Vite | Development server and production build |
-| Tailwind CSS v4 | Styling and responsive layouts |
-| Motion | Interface animations |
-| Lucide React | Icons |
-| HTML5 and CSS3 | Markup and styling |
+**Source location:** Repository root (src/)
 
-## Featured Projects
+### Task 2 — Taskflow Productivity Tracker
 
-| Project | Status | Link |
-|---|---|---|
-| AF LUXE | Ongoing | [View project](https://af-luxe-preview.pages.dev/) |
-| NAFFY SCENTS | Ongoing | [View project](https://ea0a0a53.naffyscents.pages.dev/) |
-| PAINSIONARY BOT | Built | [View bot](https://t.me/PainsionaryBot) |
-| BUILDWPS | Deployed | [View project](https://buildwps.pages.dev/) |
+A responsive task manager for organising personal, work, study, and health-related tasks.
 
-## Project Structure
+**Highlights**
+- Create, edit, and delete tasks
+- Optional descriptions and due dates
+- Work, Personal, Study, and Health categories
+- Completion status and task filters
+- Search by task title or description
+- Category filtering and productivity statistics
+- Browser localStorage persistence
+- Responsive desktop, tablet, and mobile layouts
 
-```text
-ibrahim-agboola-portfolio/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   │   ├── About.tsx
-│   │   ├── Contact.tsx
-│   │   ├── Footer.tsx
-│   │   ├── Hero.tsx
-│   │   ├── Navbar.tsx
-│   │   ├── Projects.tsx
-│   │   └── Skills.tsx
-│   ├── data/
-│   │   └── portfolio.ts
-│   ├── hooks/
-│   │   └── useTheme.ts
-│   ├── App.tsx
-│   ├── index.css
-│   └── main.tsx
+**Technology**
+- React 19
+- TypeScript
+- Vite
+- CSS
+- Lucide React
+- Browser localStorage
+
+**Source location:** [task-2-task-manager/](./task-2-task-manager/)
+
+**Documentation:** [Task 2 README](./task-2-task-manager/README.md)
+
+### Task 4 — Forma E-commerce Store
+
+**Live website:** [https://forma-datheon.vercel.app](https://forma-datheon.vercel.app)
+
+A responsive storefront and shopping-bag experience using product and category data from FakeStoreAPI.
+
+**Highlights**
+- Product catalogue loaded from FakeStoreAPI
+- Product search, category filtering, and sorting
+- Product favourites for the current session
+- Add-to-bag interaction without automatically opening the shopping bag
+- Shopping-bag drawer with quantity controls and item removal
+- Cart persistence using browser localStorage
+- Subtotal, estimated tax, shipping, and total calculations
+- Simulated checkout flow
+- Responsive navigation, full-height menu drawer, and editorial footer
+- Loading, empty, and API error states
+
+**Technology**
+- React 19
+- TypeScript
+- Vite
+- CSS
+- Lucide React
+- FakeStoreAPI
+- Browser localStorage
+
+**Source location:** [task-4-ecommerce-cart/](./task-4-ecommerce-cart/)
+
+**Documentation:** [Task 4 README](./task-4-ecommerce-cart/README.md)
+
+> **Checkout note:** Forma is an internship demonstration. Checkout is simulated; it does not collect real payments, create backend orders, or transmit customer details to a server. Product data comes from FakeStoreAPI, and the tax and shipping figures are demonstration assumptions rather than a real merchant policy.
+
+## Repository structure
+
+\`\`\`text
+Datheon_Full_Stack_Web_Development_Internship/
+├── src/                         # Task 1: Personal Developer Portfolio
+├── task-2-task-manager/          # Task 2: Taskflow Productivity Tracker
+│   ├── src/
+│   └── README.md
+├── task-4-ecommerce-cart/        # Task 4: Forma E-commerce Store
+│   ├── src/
+│   └── README.md
+├── .github/
 ├── .env.example
-├── .gitignore
 ├── index.html
-├── metadata.json
 ├── package.json
 ├── tsconfig.json
-└── vite.config.ts
-```
+├── vite.config.ts
+└── README.md
+\`\`\`
 
-## Getting Started
+## Running the projects locally
 
-### Prerequisites
+Each project is a separate application. Install dependencies and run the development server from the relevant project directory.
 
-- Node.js version supported by the installed Vite version
-- npm
-- Git
+### Task 1 — Portfolio
 
-### 1. Clone the repository
+From the repository root:
 
-```bash
-git clone https://github.com/painstakinggg/ibrahim-agboola-portfolio.git
-```
-
-### 2. Open the project directory
-
-```bash
-cd ibrahim-agboola-portfolio
-```
-
-### 3. Install dependencies
-
-```bash
+\`\`\`bash
 npm install
-```
-
-### 4. Start the development server
-
-```bash
 npm run dev
-```
+\`\`\`
 
-The development server is configured to use port 3000. Open the local URL shown in your terminal (normally `http://localhost:3000`).
+### Task 2 — Taskflow
 
-### 5. Create a production build
+\`\`\`bash
+cd task-2-task-manager
+npm install
+npm run dev
+\`\`\`
 
-```bash
+### Task 4 — Forma
+
+\`\`\`bash
+cd task-4-ecommerce-cart
+npm install
+npm run dev
+\`\`\`
+
+For each application, Vite prints the local development URL in the terminal.
+
+## Production builds
+
+Run the following from the relevant project directory:
+
+\`\`\`bash
 npm run build
-```
-
-### 6. Preview the production build
-
-```bash
 npm run preview
-```
+\`\`\`
 
-### 7. Run the configured TypeScript check
+The projects have their own package configuration and build scripts. Refer to each project's README for its requirements, data behaviour, and scope.
 
-```bash
-npm run lint
-```
+## Development approach
 
-**Note:** The current `lint` script runs `tsc --noEmit`. It checks TypeScript without generating build output; it is not an ESLint command.
+The projects were developed iteratively, with attention to:
+- Clear component structure and maintainable code
+- Responsive layouts across common screen sizes
+- Accessible controls, labels, and keyboard focus
+- Loading, empty, and error states where applicable
+- Practical documentation and setup instructions
+- Testing and deployment appropriate to each project
 
-## Contact Form
+AI-powered development tools were used selectively to support research, implementation, troubleshooting, and refinement. AI assistance formed part of the development workflow; the resulting code and project decisions were reviewed and integrated into the applications.
 
-The contact form currently validates input in the browser and provides an email-client (`mailto:`) and copy-to-clipboard fallback. It does not send messages directly to a backend or email service. Visitors need to complete sending the message in their own email application.
+## Scope and implementation notes
 
-## Setup Notes and Troubleshooting
+- Task 1 is deployed at [iagboola.vercel.app](https://iagboola.vercel.app).
+- Task 2 is maintained as a separate application in this repository. A public deployment link is not listed here.
+- Task 4 is deployed at [forma-datheon.vercel.app](https://forma-datheon.vercel.app).
+- Task 2 and Task 4 use browser localStorage for local persistence; this does not provide cross-device synchronisation or a remote database.
+- Forma uses a public demonstration API and a simulated checkout. It is not a production payment or order-processing system.
 
-The repository currently does not include a package lockfile, so use `npm install` to install dependencies.
-
-If setup or development commands fail:
-
-- Check that your Node.js and npm versions are compatible with the installed Vite version.
-- If the configured development port is already occupied, stop the process using it before restarting the server.
-- Run `npm run lint` to identify TypeScript errors.
-- Run `npm run build` and review the terminal output if the production build fails.
-- If styling appears incorrect, verify that the Tailwind CSS Vite plugin is installed and configured.
-
-These are practical setup checks; they are not presented as a record of specific errors encountered during development.
-
-## AI-Assisted Development
-
-AI-powered tools, including Google AI Studio, were used selectively during development to support implementation, explore ideas, and improve productivity. AI assistance was used as a development aid, and the generated work was integrated and reviewed during the development process.
-
-## Contact
+## Author
 
 **Ibrahim Opeyemi Agboola**
 
-- Email: [painstaking.web@gmail.com](mailto:painstaking.web@gmail.com)
-- LinkedIn: [LinkedIn profile](https://www.linkedin.com/in/ibrahim-agboola-8607b5448/)
 - GitHub: [@Painstakinggg](https://github.com/Painstakinggg)
+- LinkedIn: [LinkedIn profile](https://www.linkedin.com/in/ibrahim-agboola-8607b5448/)
+- Email: [painstaking.web@gmail.com](mailto:painstaking.web@gmail.com)
 
 ---
 
-Built with React, TypeScript, and a commitment to continuous learning.
+Built as part of the Datheon Full-Stack Web Development Internship, with a focus on practical implementation and continuous learning.
