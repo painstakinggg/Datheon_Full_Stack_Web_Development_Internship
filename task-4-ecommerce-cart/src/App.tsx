@@ -43,6 +43,7 @@ function App() {
   const [cart, setCart] = useState<CartItem[]>(readCart);
   const [activeCategory, setActiveCategory] = useState("all");
   const [search, setSearch] = useState("");
+  const [searchOpen, setSearchOpen] = useState(false);
   const [sort, setSort] = useState("featured");
   const [loading, setLoading] = useState(true);
   const [apiError, setApiError] = useState("");
@@ -143,14 +144,13 @@ function App() {
 
   return (
     <div className="store">
-      <div className="announcement">Complimentary shipping on orders over $100 <span>•</span> Thoughtful things, everyday</div>
       <header className="header">
         <a className="wordmark" href="#" aria-label="Forma home">forma<span>.</span></a>
-        <nav className="main-nav" aria-label="Main navigation">
-          <a href="#shop">Shop</a><a href="#story">Our approach</a><a href="#footer">Help</a>
-        </nav>
         <div className="header-actions">
-          <label className="header-search"><Search size={17}/><input aria-label="Search products" placeholder="Search products" value={search} onChange={event => { setSearch(event.target.value); setActiveCategory("all"); }}/></label>
+          <div className="header-search-wrap">
+            <button type="button" className="search-toggle" aria-label={searchOpen ? "Close product search" : "Open product search"} aria-expanded={searchOpen} onClick={() => setSearchOpen(open => !open)}><Search size={19}/></button>
+            {searchOpen && <input className="header-search-input" aria-label="Search products" placeholder="Search products" autoFocus value={search} onChange={event => { setSearch(event.target.value); setActiveCategory("all"); }}/ >}
+          </div>
           <button className="bag-button" onClick={() => setCartOpen(true)} aria-label={`Open shopping bag, ${itemCount} items`}><ShoppingBag size={19}/><span>Bag</span><b>{itemCount}</b></button>
         </div>
       </header>
