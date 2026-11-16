@@ -140,7 +140,7 @@ export function Contact() {
           {/* Left Column: Direct Contact Channels */}
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold tracking-wider text-violet-700 dark:text-violet-400">
-              04. Contact
+              05. Contact
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50 [text-wrap:balance]">
               Let&apos;s build something functional together.
