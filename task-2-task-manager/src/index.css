@@ -83,3 +83,34 @@ textarea:focus-visible {
   border-color: #8c80ef;
   box-shadow: 0 0 0 3px #7868e815;
 }
+
+
+/* Completion feedback: a subtle pop and fade make task status changes visible. */
+.task-row {
+  transition: background-color .24s ease, border-color .24s ease;
+}
+.task-row.completed {
+  background: #fbfaff;
+  animation: task-complete-in .28s ease-out;
+}
+.task-row.completed .check-button {
+  animation: task-check-pop .28s ease-out;
+}
+.task-row.completed .task-title-line h3 {
+  transition: color .24s ease, opacity .24s ease;
+}
+@keyframes task-complete-in {
+  0% { background-color: #eeebff; }
+  100% { background-color: #fbfaff; }
+}
+@keyframes task-check-pop {
+  0% { transform: scale(.78); }
+  65% { transform: scale(1.16); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .task-row.completed,
+  .task-row.completed .check-button {
+    animation: none;
+  }
+}
