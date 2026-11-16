@@ -2,6 +2,7 @@ import { useTheme } from './hooks/useTheme';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
+import { ProfessionalDevelopment } from './components/ProfessionalDevelopment';
 import { Skills } from './components/Skills';
 import { Projects } from './components/Projects';
 import { Contact } from './components/Contact';
@@ -24,6 +25,7 @@ export default function App() {
       <main id="main-content">
         <Hero theme={theme} onToggleTheme={toggleTheme} />
         <About />
+        <ProfessionalDevelopment />
         <Skills />
         <Projects />
         <Contact />
