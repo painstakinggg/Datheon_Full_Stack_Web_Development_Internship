@@ -68,7 +68,7 @@ export function Projects() {
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold tracking-wider text-violet-700 dark:text-violet-400">
-              03. Featured Projects
+              04. Featured Projects
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50 [text-wrap:balance]">
               Selected web applications, storefronts, and automation tools.
