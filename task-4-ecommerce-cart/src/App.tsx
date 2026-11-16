@@ -104,7 +104,6 @@ function AppContent() {
   const location = useLocation();
   const [pastHero, setPastHero] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
-  const [categories, setCategories] = useState<string[]>([]);
   const [cart, setCart] = useState<CartItem[]>(readCart);
   const [activeCategory, setActiveCategory] = useState("all");
   const [search, setSearch] = useState("");
@@ -146,16 +145,11 @@ function AppContent() {
       setLoading(true);
       setApiError("");
       try {
-        const [productResponse, categoryResponse] = await Promise.all([
-          fetch("https://fakestoreapi.com/products", { signal: controller.signal }),
-          fetch("https://fakestoreapi.com/products/categories", { signal: controller.signal })
-        ]);
-        if (!productResponse.ok || !categoryResponse.ok) throw new Error("The store could not load products right now.");
+        const productResponse = await fetch("https://fakestoreapi.com/products", { signal: controller.signal });
+        if (!productResponse.ok) throw new Error("The store could not load products right now.");
         const productData: unknown = await productResponse.json();
-        const categoryData: unknown = await categoryResponse.json();
-        if (!Array.isArray(productData) || !Array.isArray(categoryData)) throw new Error("The store returned an unexpected response.");
+        if (!Array.isArray(productData)) throw new Error("The store returned an unexpected response.");
         setProducts(productData as Product[]);
-        setCategories(categoryData as string[]);
       } catch (error) {
         if (error instanceof Error && error.name !== "AbortError") {
           setApiError(error.message || "Something went wrong while loading the catalog.");
@@ -186,7 +180,8 @@ function AppContent() {
   const filteredProducts = useMemo(() => {
     const query = search.trim().toLowerCase();
     const list = products.filter(product =>
-      (activeCategory === "all" || product.category === activeCategory) &&
+      (activeCategory === "all" ||
+        (activeCategory === "clothing" ? product.category === "men's clothing" || product.category === "women's clothing" : product.category === activeCategory)) &&
       (!query || product.title.toLowerCase().includes(query) || product.description.toLowerCase().includes(query))
     );
     if (sort === "price-low") return [...list].sort((a, b) => a.price - b.price);
@@ -263,7 +258,9 @@ function AppContent() {
           <div className="catalog-toolbar" id="categories">
             <div className="category-tabs" aria-label="Product categories">
               <button className={activeCategory === "all" ? "selected" : ""} onClick={() => setActiveCategory("all")}>All products</button>
-              {categories.map(category => <button key={category} className={activeCategory === category ? "selected" : ""} onClick={() => setActiveCategory(category)}>{category}</button>)}
+              <button className={activeCategory === "electronics" ? "selected" : ""} onClick={() => setActiveCategory("electronics")}>Electronics</button>
+              <button className={activeCategory === "jewelery" ? "selected" : ""} onClick={() => setActiveCategory("jewelery")}>Jewelry</button>
+              <button className={activeCategory === "clothing" ? "selected" : ""} onClick={() => setActiveCategory("clothing")}>Clothing</button>
             </div>
             <label className="sort-control"><SlidersHorizontal size={15}/><span>Sort</span><select aria-label="Sort products" value={sort} onChange={event => setSort(event.target.value)}><option value="featured">Featured</option><option value="price-low">Price: low to high</option><option value="price-high">Price: high to low</option><option value="rating">Top rated</option></select><ChevronDown size={13}/></label>
           </div>
@@ -275,7 +272,7 @@ function AppContent() {
           {!loading && !apiError && filteredProducts.length > 0 && <div className="product-grid">
             {filteredProducts.map(product => (
               <article className="product-card" key={product.id}>
-                <div className="product-image-wrap"><Link className="product-image-link" to={`/product/${product.id}`} aria-label={`View ${product.title}`}><img src={product.image} alt={product.title} loading="lazy"/></Link><button className={favorites.includes(product.id) ? "favorite active" : "favorite"} onClick={() => toggleFavorite(product.id)} aria-label={favorites.includes(product.id) ? "Remove from favorites" : "Add to favorites"}><Heart size={17} fill={favorites.includes(product.id) ? "currentColor" : "none"}/></button><button className="quick-add" onClick={() => addToCart(product)}><Plus size={15}/> Add to bag</button></div>
+                <div className="product-image-wrap"><Link className="product-image-link" to={`/product/${product.id}`} aria-label={`View ${product.title}`}><img src={product.image} alt={product.title} loading="lazy"/></Link>{product.rating.rate >= 4.5 && <span className="product-badge">Top rated</span>}{product.rating.count >= 300 && product.rating.rate < 4.5 && <span className="product-badge">Popular</span>}<button className={favorites.includes(product.id) ? "favorite active" : "favorite"} onClick={() => toggleFavorite(product.id)} aria-label={favorites.includes(product.id) ? "Remove from favorites" : "Add to favorites"}><Heart size={17} fill={favorites.includes(product.id) ? "currentColor" : "none"}/></button><button className="quick-add" onClick={() => addToCart(product)}><Plus size={15}/> Add to bag</button></div>
                 <div className="product-info"><span className="product-category">{product.category}</span><h3><Link to={`/product/${product.id}`}>{product.title}</Link></h3><div className="product-bottom"><strong>{money(product.price)}</strong><span className="rating"><Star size={12} fill="currentColor"/> {product.rating.rate.toFixed(1)} <small>({product.rating.count})</small></span></div></div>
               </article>
             ))}
