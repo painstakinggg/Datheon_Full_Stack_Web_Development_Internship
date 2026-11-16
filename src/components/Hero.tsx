@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Code2, Github, Linkedin, Mail, Moon, Sun } from 'lucide-react';
+import { ArrowRight, Code2, Download, Github, Linkedin, Mail, Moon, Sun } from 'lucide-react';
 import { ARCHITECTURE_MODULES, PERSONAL_INFO } from '../data/portfolio';
 import type { ThemeMode } from '../hooks/useTheme';
 
@@ -62,6 +62,15 @@ export function Hero({ theme, onToggleTheme }: HeroProps) {
                   className="inline-flex min-h-[44px] items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-900 transition-colors duration-150 hover:border-violet-500 hover:text-violet-700 dark:border-zinc-700 dark:bg-[#0E0E14] dark:text-zinc-100 dark:hover:border-violet-400 dark:hover:text-violet-300 whitespace-nowrap shrink-0"
                 >
                   Contact Me
+                </a>
+
+                <a
+                  href="/Ibrahim-Agboola-Resume.pdf"
+                  download="Ibrahim-Agboola-Resume.pdf"
+                  className="inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-violet-300 bg-violet-50 px-6 py-3 text-sm font-semibold text-violet-800 transition-colors duration-150 hover:border-violet-500 hover:bg-violet-100 dark:border-violet-500/40 dark:bg-violet-950/30 dark:text-violet-200 dark:hover:bg-violet-950/50 whitespace-nowrap shrink-0"
+                >
+                  <Download className="h-4 w-4" aria-hidden="true" />
+                  Download Resume
                 </a>
               </div>
             </div>
