@@ -4,9 +4,10 @@ A responsive e-commerce product catalog and interactive shopping cart built with
 
 ## Features
 
-- Fetches product catalog and categories from FakeStoreAPI
+- Fetches the product catalog from FakeStoreAPI
+- Product cards show prices, customer ratings, review counts, and data-driven Top rated / Popular badges
 - Search products by title and description
-- Filter products by category
+- Filter by All products, Electronics, Jewelry, or Clothing (men's and women's clothing grouped together)
 - Sort by featured order, price, or customer rating
 - Add products to a shopping bag
 - Increase and decrease item quantities or remove items
