@@ -155,7 +155,7 @@ export const FEATURED_PROJECTS: ProjectItem[] = [
       'A fragrance e-commerce platform focused on product discovery, fragrance shopping and online ordering.',
     status: 'Ongoing',
     linkLabel: 'Live Preview',
-    url: 'https://ea0a0a53.naffyscents.pages.dev/',
+    url: 'https://shopnaffyscents.pages.dev/',
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite', 'Lucide React', 'Cloudflare Pages'],
     image: naffyScentsImage,
     imageAlt: 'NAFFY SCENTS artisanal glass fragrance bottle studio preview',
