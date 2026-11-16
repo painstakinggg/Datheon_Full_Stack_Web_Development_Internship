@@ -18,7 +18,7 @@ export function Skills() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl">
           <p className="text-xs font-semibold tracking-wider text-violet-700 dark:text-violet-400">
-            02. Technical Skills
+            03. Technical Skills
           </p>
           <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-zinc-950 sm:text-4xl dark:text-zinc-50 [text-wrap:balance]">
             Core technologies across frontend, backend, cloud, and automation.
